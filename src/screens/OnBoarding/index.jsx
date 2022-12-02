@@ -1,15 +1,28 @@
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 import logoPex from '../../assets/logo-pex.png';
 import arrowImg from '../../assets/arrow.png';
 import { VStack, Text, Heading, Image } from 'native-base';
+import { FloatButton } from '@components/FloatButton';
+import { FloatButtonFAB } from '@components/FloatButtonFAB';
+
+
 
 export function OnBoarding() {
 
+  const navigation = useNavigation();
+
+  function handleNavigateToLogin() {
+    navigation.navigate('Login');
+  }
+
   return (
       <VStack flex={1}
+        padding={8}
         alignItems="center"
         justifyContent="center"
       >
+      
         <Image
           source={arrowImg}
           alt="arrow"
@@ -19,20 +32,51 @@ export function OnBoarding() {
           left={35}
         />
         
-          <Image
-            source={logoPex}
-            alt="logo"
-            alignSelf="center"
-            marginBottom={32}
-          />
-          <Heading paddingTop={8} paddingBottom={18} >
-            Bem vindo a PEX
-          </Heading>
-          <Text fontSize={14} paddingLeft={8} paddingRight={8} textAlign="center">
-            Economize tempo e dinheiro em todas as etapas da sua obra. Na reforma ou construção nós iremos te auxiliar em tudo.
-          </Text>
-        
+        <Image
+          source={logoPex}
+          defaultSource={logoPex}
+          alt="logo"
+          alignSelf="center"
+          marginBottom={32}
+        />
 
+        <Heading paddingTop={8} paddingBottom={18} >
+          Bem vindo a PEX
+        </Heading>
+        
+        <Text fontSize={14} textAlign="center">
+          Economize tempo e dinheiro em todas as etapas da sua obra. Na reforma ou construção nós iremos te auxiliar em tudo.
+        </Text>
+
+        <FloatButton 
+          title="Pular"
+          position='absolute'
+          backgroundColor='transparent'
+          top={16}
+          right={8}
+          onPress={handleNavigateToLogin}
+        />
+        <FloatButtonFAB 
+          title="->"
+          position='absolute'
+          // backgroundColor='transparent'
+          bottom={16}
+          right={8}
+          onPress={handleNavigateToLogin}
+        />
+
+        {/* <Button 
+          title="->"
+          position='absolute'
+          backgroundColor='orange.500'
+          borderRadius={50}
+          
+          // fontSize={14}
+          bottom={16}
+          right={8}
+        /> */}
+        
+          
       </VStack>
   );
   // return (
