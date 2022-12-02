@@ -7,7 +7,6 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export function AppRoutes() {
 
   return (
-    // <Navigator>
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen 
         name="OnBoarding"
@@ -16,3 +15,4 @@ export function AppRoutes() {
     </Navigator>
   );
 }
+
