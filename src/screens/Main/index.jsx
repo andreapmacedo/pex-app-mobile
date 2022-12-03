@@ -5,6 +5,7 @@ import logoPex from '../../assets/logo-pex-2.png';
 import topBanner from '../../assets/top-banner.png';
 import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
+
   
 export function Main() {
 
@@ -45,9 +46,16 @@ export function Main() {
 
           <View style={styles.container}>
 
+            {/* <Carousel
+              ref={(c) => { this._carousel = c; }}
+              data={this.state.entries}
+              renderItem={this._renderItem}
+              sliderWidth={sliderWidth}
+              itemWidth={itemWidth}
+            /> */}
           
           </View>
-          <View style={styles.footer}>
+          {/* <View style={styles.footer}>
             <TouchableOpacity
               style={styles.button}
               onPress={() => navigation.navigate('SignUp')}
@@ -65,7 +73,7 @@ export function Main() {
                 Criar conta
               </Text>
             </View>
-          </View>
+          </View> */}
         
       </VStack>
   );
