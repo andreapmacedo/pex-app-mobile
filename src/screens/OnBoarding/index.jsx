@@ -6,14 +6,13 @@ import { VStack, Text, Heading, Image } from 'native-base';
 import { FloatButton } from '@components/FloatButton';
 import { FloatButtonFAB } from '@components/FloatButtonFAB';
 
-
-
 export function OnBoarding() {
 
   const navigation = useNavigation();
 
   function handleNavigateToLogin() {
-    navigation.navigate('Login');
+    // navigation.navigate('Login');
+    navigation.navigate('Main');
   }
 
   return (
@@ -63,6 +62,7 @@ export function OnBoarding() {
           bottom={16}
           right={8}
           onPress={handleNavigateToLogin}
+          
         />
 
         {/* <Button 
