@@ -34,7 +34,16 @@ export function TermsAndConditions() {
         </TouchableOpacity>
       </View>
 
+      
+      <Text style={styles.describe}>
+       Ultima atualização em Outrubro/2022
+      </Text>
+      <Text style={styles.title}>
+        Temos de uso
+      </Text>          
+
       <ScrollView style={styles.scrollView}>
+        <Text style={styles.textItem}>1. Termos</Text>          
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -44,6 +53,7 @@ export function TermsAndConditions() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Text>
+        <Text style={styles.textItem}>2. Licença de uso</Text>          
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -53,6 +63,7 @@ export function TermsAndConditions() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Text>
+        <Text style={styles.textItem}>3. Outros</Text>          
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -121,15 +132,25 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    paddingTop: 24,
+    fontSize: 24,
+    fontWeight: 'bold', 
+    paddingBottom: 32,
   },
   describe: {
     fontSize: 14,
     color: '#B8B5C3',
+    paddingTop: 40,
+    paddingBottom: 8,
+  },
+  text: {
+    fontSize: 14,
+    color: '#B8B5C3',
     paddingTop: 8,
-    paddingBottom: 16,
+    paddingBottom: 24,
+  },
+  textItem: {
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   orageTextTop: {
     fontSize: 14,

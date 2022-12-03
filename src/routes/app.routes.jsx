@@ -7,6 +7,7 @@ import { SignUp } from "../screens/Auth/SignUp";
 import { SignIn } from "../screens/Auth/SignIn";
 import { TermsAndConditions } from "../screens/Auth/TermsAndConditions";
 import { EnableFaceId } from "../screens/Auth/EnableFaceId";
+import { Main } from "../screens/Main";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ export function AppRoutes() {
       <Screen name="SignIn" component={SignIn} />
       <Screen name="TermsAndConditions" component={TermsAndConditions} />
       <Screen name="EnableFaceId" component={EnableFaceId} />
+      <Screen name="Main" component={Main} />
     </Navigator>
   );
 }
