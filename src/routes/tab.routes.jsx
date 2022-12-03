@@ -12,6 +12,7 @@ import { SignIn } from "../screens/Auth/SignIn";
 import { TermsAndConditions } from "../screens/Auth/TermsAndConditions";
 import { EnableFaceId } from "../screens/Auth/EnableFaceId";
 import { Main } from "../screens/Main";
+import { Product } from "../screens/Product";
 
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -58,7 +59,7 @@ export function TabRoutes() {
       />
       <Screen name="EnableFaceId" component={EnableFaceId} />
       <Screen name="Main" component={Main} />
-      {/* <Screen name="Products" component={Products} /> */}
+      <Screen name="Product" component={Product} />
     </Navigator>
   );
 }  

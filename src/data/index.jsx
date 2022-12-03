@@ -5,6 +5,15 @@ import productImg3 from '../assets/product-img-3.png';
 
 export const categories = [ 'Todas', 'Ofertas', 'Pisos e porcelanatos', 'Revestimentos', 'Ferragens', 'Ferramentas', 'Elétrica', 'Hidráulica', 'Construção', 'Jardinagem', 'Móveis', 'Decoração', 'Limpeza', 'Segurança', 'Outros' ];
 
+export const productCarousel = [
+  {
+    images: [productImg1, productImg2, productImg3],
+  },
+  {
+    images: [productImg1, productImg2, productImg3],
+  },
+]
+
 export const productCartds = [
   {
     image: productImg1,
