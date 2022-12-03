@@ -12,13 +12,13 @@ import { Feather } from '@expo/vector-icons';
 import { ListButton } from '../../components/ListButton';
 import { ProductCard } from '../../components/ProductCard';
 import { Dimensions } from 'react-native';
-const windowWidth = Dimensions.get('window').width;
+import { categories } from '../../data';
 
+const windowWidth = Dimensions.get('window').width;
   
 export function Main() {
 
   const navigation = useNavigation();
-  const categories = [ 'Todas', 'Ofertas', 'Pisos e porcelanatos', 'Revestimentos', 'Ferragens', 'Ferramentas', 'Elétrica', 'Hidráulica', 'Construção', 'Jardinagem', 'Móveis', 'Decoração', 'Limpeza', 'Segurança', 'Outros' ];
 
   return (
       <VStack flex={1}
@@ -73,6 +73,8 @@ export function Main() {
           <Text style={styles.title} >Produtos populares</Text>
           <View style={styles.cardContainer}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <ProductCard />
+              <ProductCard />
               <ProductCard />
             </ScrollView>
           </View>
