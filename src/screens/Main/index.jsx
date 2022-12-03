@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ScrollView, View, VStack } from 'native-base';
+
+
 import logoPex from '../../assets/logo-pex-2.png';
 import topBanner from '../../assets/top-banner.png';
 import frameFake from '../../assets/frame-fake.png';
