@@ -1,21 +1,24 @@
 import { useNavigation } from '@react-navigation/native';
+import { useContext } from 'react';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
 import image_login from '../../assets/image_login.png';
 import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
+import { useAuth } from '../../hooks/auth';
+
+
 const windowWidth = Dimensions.get('window').width;
   
 
 
 export function Login() {
 
-  const navigation = useNavigation();
+  const { user } = useAuth();
   
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
 
   return (
       <VStack flex={1}

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { AuthProvider } from './src/hooks/auth';
 
 import { Routes } from './src/routes';
 
@@ -13,7 +14,10 @@ export default function App() {
   return (
     <NativeBaseProvider theme={THEME}>
         <StatusBar style="auto" />
-        {fontsLoaded ? <Routes /> : <Loading />}
+        <AuthProvider>
+          {fontsLoaded ? <Routes /> : <Loading />}
+        </AuthProvider>
+        
     </NativeBaseProvider>
   );
 }
