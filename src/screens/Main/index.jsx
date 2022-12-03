@@ -12,7 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import { ListButton } from '../../components/ListButton';
 import { ProductCard } from '../../components/ProductCard';
 import { Dimensions } from 'react-native';
-import { categories } from '../../data';
+import { categories, productCartds } from '../../data';
 
 const windowWidth = Dimensions.get('window').width;
   
@@ -42,18 +42,16 @@ export function Main() {
             </TouchableOpacity>
           </View>
 
+          <ScrollView>
           <Image
               style={styles.topBanner}
               source={topBanner}
             />
 
-          <ScrollView>
 
           
+          <Text style={styles.title} >Categorias</Text>
           <View style={styles.container}>
-
-          
-            <Text style={styles.title} >Categorias</Text>
             <View style={styles.scrollCategories}>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 { categories.map((category, index) => (
@@ -73,12 +71,16 @@ export function Main() {
           <Text style={styles.title} >Produtos populares</Text>
           <View style={styles.cardContainer}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              { productCartds.map((productCard, index) => (
+                <ProductCard 
+                  key={index}
+                  title={productCard.textCategory}
+                  description={productCard.textDescription}
+                  image={productCard.image}
+                />
+              ))}
             </ScrollView>
           </View>
-
           <View style={styles.bannerContainer}>
             <Image
               style={styles.genericBanner}  
@@ -113,8 +115,10 @@ const styles = StyleSheet.create({
     
   },
   cardContainer: {
+    marginTop: 10,
     flexDirection: 'row',
-    paddingLeft: windowWidth * 0.33,
+    paddingLeft: 33,
+    // paddingLeft: windowWidth * 0.33,
     
   },
   imageContainer: {
@@ -129,7 +133,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   topBanner: {
-    marginTop: 30,
     width: '100%',
     resizeMode: 'stretch',
   },
@@ -141,11 +144,11 @@ const styles = StyleSheet.create({
     width: '100%',
     
   },
-  
   topMenu: {
     paddingTop: 65,
     paddingLeft: 32,
     paddingRight: 32,
+    marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
@@ -157,6 +160,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 24,
     alignSelf: 'center',
+    paddingLeft: 33,
   },
   describe: {
     fontSize: 14,
