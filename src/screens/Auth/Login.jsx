@@ -1,24 +1,23 @@
-import { useNavigation } from '@react-navigation/native';
-import { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
 import image_login from '../../assets/image_login.png';
-import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
-import { useAuth } from '../../hooks/auth';
-
+import AuthContext from "../../context/AuthContext";
 
 const windowWidth = Dimensions.get('window').width;
-  
-
 
 export function Login() {
-
-  const { user } = useAuth();
-  
-  const navigation = useNavigation();
+  const { setAuthenticated, authenticated, user } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function handleLogin() {
+    if (Number(password) === user.password) {
+      console.log('igual');
+      setAuthenticated(true);
+    }
+  }
 
   return (
       <VStack flex={1}
@@ -27,7 +26,6 @@ export function Login() {
         <Image
           style={styles.image}
           source={image_login}
-          // alignItems="center"
         />
 
         <View style={styles.container}>
@@ -63,7 +61,8 @@ export function Login() {
         <View style={styles.footer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('SignUp')}
+            // onPress={() => navigation.navigate('SignUp')}
+            onPress={handleLogin}
           >
             <Text style={styles.buttonText}>
               Acessar
@@ -146,8 +145,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    position: 'absolute',
-    bottom: 40,
+    // position: 'absolute',
+    // bottom: 40,
     paddingLeft: 32,
     paddingRight: 32,
   },

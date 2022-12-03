@@ -11,9 +11,6 @@ import { Feather } from '@expo/vector-icons';
 import { ListButton } from '../../components/ListButton';
 import { ProductCard } from '../../components/ProductCard';
 import { categories, productCartds } from '../../data';
-// import { Dimensions } from 'react-native';
-
-// const windowWidth = Dimensions.get('window').width;
   
 export function Main() {
 

@@ -5,12 +5,6 @@ import { Octicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { OnBoarding } from '../screens/OnBoarding';
-import { Login } from "../screens/Auth/Login";
-import { SignUp } from "../screens/Auth/SignUp";
-import { SignIn } from "../screens/Auth/SignIn";
-import { TermsAndConditions } from "../screens/Auth/TermsAndConditions";
-import { EnableFaceId } from "../screens/Auth/EnableFaceId";
 import { Main } from "../screens/Main";
 import { Product } from "../screens/Product";
 
@@ -23,43 +17,36 @@ export function TabRoutes() {
       headerShown: false,
       tabBarShowLabel: false, 
     }}>
-      <Screen 
-        name="OnBoarding"
-        component={OnBoarding}
-      />
 
       <Screen 
-        name="Login"
-        component={Login}
+        name="Main"
+        component={Main}
         options={{
           tabBarIcon: (() => (
             <Feather name="shopping-cart" size={24} color="black" />
           ))}}
       />
-      <Screen name="SignUp" component={SignUp} 
+      <Screen name="Product" component={Product} 
         options={{
           tabBarIcon: (() => (
             <Octicons name="apps" size={24} color="black" />
           ))}}
       
       />
-      <Screen name="SignIn" component={SignIn} 
+      <Screen name="main2" component={Main} 
         options={{
           tabBarIcon: (() => (
             <Fontisto name="favorite" size={24} color="black" />
           ))}}
       
       />
-      <Screen name="TermsAndConditions" component={TermsAndConditions} 
+      <Screen name="main3" component={Main} 
         options={{
           tabBarIcon: (() => (
             <FontAwesome name="user-o" size={24} color="black" />
           ))}}
       
       />
-      <Screen name="EnableFaceId" component={EnableFaceId} />
-      <Screen name="Main" component={Main} />
-      <Screen name="Product" component={Product} />
     </Navigator>
   );
 }  
