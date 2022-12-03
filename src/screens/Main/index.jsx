@@ -5,6 +5,7 @@ import logoPex from '../../assets/logo-pex-2.png';
 import topBanner from '../../assets/top-banner.png';
 import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
+import Carousel from 'react-native-reanimated-carousel';
 
   
 export function Main() {
@@ -46,13 +47,28 @@ export function Main() {
 
           <View style={styles.container}>
 
-            {/* <Carousel
-              ref={(c) => { this._carousel = c; }}
-              data={this.state.entries}
-              renderItem={this._renderItem}
-              sliderWidth={sliderWidth}
-              itemWidth={itemWidth}
-            /> */}
+          <Carousel
+                loop
+                width={width}
+                height={width / 2}
+                autoPlay={true}
+                data={[...new Array(6).keys()]}
+                scrollAnimationDuration={1000}
+                onSnapToItem={(index) => console.log('current index:', index)}
+                renderItem={({ index }) => (
+                    <View
+                        style={{
+                            flex: 1,
+                            borderWidth: 1,
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Text style={{ textAlign: 'center', fontSize: 30 }}>
+                            {index}
+                        </Text>
+                    </View>
+                )}
+            />
           
           </View>
           {/* <View style={styles.footer}>
