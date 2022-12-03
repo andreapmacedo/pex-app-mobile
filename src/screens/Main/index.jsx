@@ -1,21 +1,24 @@
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
-import { View, VStack } from 'native-base';
+import { ScrollView, View, VStack } from 'native-base';
 import logoPex from '../../assets/logo-pex-2.png';
 import topBanner from '../../assets/top-banner.png';
-import React, { useState } from 'react';
+import frameFake from '../../assets/frame-fake.png';
+import banner1 from '../../assets/banner-1.png';
+import banner2 from '../../assets/banner-2.png';
+import banner3 from '../../assets/banner-3.png';
+// import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
-import Carousel from 'react-native-reanimated-carousel';
+import { ListButton } from '../../components/ListButton';
+import { ProductCard } from '../../components/ProductCard';
+import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 
   
 export function Main() {
 
   const navigation = useNavigation();
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-
+  const categories = [ 'Todas', 'Ofertas', 'Pisos e porcelanatos', 'Revestimentos', 'Ferragens', 'Ferramentas', 'Elétrica', 'Hidráulica', 'Construção', 'Jardinagem', 'Móveis', 'Decoração', 'Limpeza', 'Segurança', 'Outros' ];
 
   return (
       <VStack flex={1}
@@ -28,7 +31,6 @@ export function Main() {
           />
 
         </View>
-        
           <View style={styles.topMenu}>
             <TouchableOpacity style={styles.buttonIcon}
               onPress={() => navigation.navigate('SignUp')}>
@@ -45,51 +47,51 @@ export function Main() {
               source={topBanner}
             />
 
+          <ScrollView>
+
+          
           <View style={styles.container}>
 
-          <Carousel
-                loop
-                width={width}
-                height={width / 2}
-                autoPlay={true}
-                data={[...new Array(6).keys()]}
-                scrollAnimationDuration={1000}
-                onSnapToItem={(index) => console.log('current index:', index)}
-                renderItem={({ index }) => (
-                    <View
-                        style={{
-                            flex: 1,
-                            borderWidth: 1,
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                            {index}
-                        </Text>
-                    </View>
-                )}
-            />
           
-          </View>
-          {/* <View style={styles.footer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('SignUp')}
-            >
-              <Text style={styles.buttonText}>
-                Acessar
-              </Text>
-            </TouchableOpacity>
-
-            <View style={styles.footerTextContainer}>
-              <Text style={styles.footerText}>
-                Não possui uma conta?
-              </Text>
-              <Text style={styles.orageText}>
-                Criar conta
-              </Text>
+            <Text style={styles.title} >Categorias</Text>
+            <View style={styles.scrollCategories}>
+              <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                { categories.map((category, index) => (
+                  <ListButton key={index} title={category}/>
+                ))}
+              </ScrollView>
             </View>
-          </View> */}
+
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <Image
+                // style={styles.image}  
+                source={frameFake}
+              />
+            </ScrollView>
+          </View>
+
+          <Text style={styles.title} >Produtos populares</Text>
+          <View style={styles.cardContainer}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+              <ProductCard />
+            </ScrollView>
+          </View>
+
+          <View style={styles.bannerContainer}>
+            <Image
+              style={styles.genericBanner}  
+              source={banner1}
+            />
+            <Image
+              style={styles.genericBanner}  
+              source={banner2}
+            />
+            <Image
+              style={styles.genericBanner}  
+              source={banner3}
+            />
+          </View>
+          </ScrollView>
         
       </VStack>
   );
@@ -101,7 +103,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingLeft: 33,
-    paddingRight: 33,
+    // paddingRight: 33,
+  },
+  scrollCategories: {
+    flexDirection: 'row',
+    padding: 10,
+    
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    paddingLeft: windowWidth * 0.33,
+    
   },
   imageContainer: {
     position: 'absolute',
@@ -119,6 +131,15 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'stretch',
   },
+  bannerContainer: {
+    marginTop: 47,
+  },
+  genericBanner: {
+    marginTop: 2,
+    width: '100%',
+    
+  },
+  
   topMenu: {
     paddingTop: 65,
     paddingLeft: 32,
@@ -130,9 +151,10 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: 'bold',
     paddingTop: 24,
+    alignSelf: 'center',
   },
   describe: {
     fontSize: 14,
