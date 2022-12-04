@@ -29,7 +29,6 @@ export function EnableFaceId() {
       <Text style={styles.describe}>
         Habilite o Face ID para acessar de forma mais fácil e ágil a sua conta da PEX com toda segurança
       </Text>
-
       <Image
         style={styles.image}
         source={face_id}

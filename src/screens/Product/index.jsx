@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { View, VStack, Actionsheet, Button, useDisclose, Box } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import { products } from '../../data';
+import illustration from '../../assets/illustration.png';
 
 import { Fontisto } from '@expo/vector-icons';
 
 export function Product() {
 
   const navigation = useNavigation();
+
+  const {
+    isOpen,
+    onOpen,
+    onClose
+  } = useDisclose();
   
   return (
     <VStack flex={1}
@@ -50,12 +56,51 @@ export function Product() {
 
         <TouchableOpacity
           style={styles.button}
-          // onPress={handleLogin}
+          onPress={onOpen}
         >
           <Text style={styles.buttonText}>
             Comprar agora
           </Text>
         </TouchableOpacity>
+
+        <Actionsheet isOpen={isOpen} onClose={onClose}>
+        <Actionsheet.Content style={styles.actionSheet}>
+          <Actionsheet.Item style={styles.actionSheet}>
+            <Image
+              style={styles.imageIllustration}
+              source={illustration}
+            />
+
+            <Text style={styles.titleAction}>
+              Adicionado ao carrinho
+            </Text>          
+            <Text style={styles.textAction}>
+              Clique no botão de finalizar para solicitar sua cotação ou continue navegando pela PEX
+            </Text>
+
+            <TouchableOpacity
+              style={styles.buttonWhite}
+              onPress={onClose}
+            >
+              <Text style={styles.buttonTextWhite}>
+                Continuar comprando
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={onClose}
+            >
+              <Text style={styles.buttonText}>
+                Finalizar Cotação
+              </Text>
+            </TouchableOpacity>
+          </Actionsheet.Item>
+          <Actionsheet.Item>
+          </Actionsheet.Item>
+
+        </Actionsheet.Content>
+      </Actionsheet>
+
       </View>
     </VStack>
   );
@@ -87,14 +132,37 @@ const styles = StyleSheet.create({
     maxHeight: 334,
     resizeMode: 'contain',
   },
+  imageIllustration: {
+    // marginTop: 32,
+    // marginRight: 16,
+    alignSelf: 'center',
+    // maxWidth: 311,
+    // maxHeight: 334,
+    // resizeMode: 'contain',
+  },
   title: {
     paddingRight: 32,
     fontSize: 24,
     fontWeight: 'bold', 
     marginTop: 8,
   },
+  titleAction: {
+    paddingRight: 32,
+    alignSelf: 'center',
+    fontSize: 24,
+    fontWeight: 'bold', 
+    marginTop: 8,
+  },
   text: {
     paddingRight: 32,
+    fontSize: 12,
+    color: '#999999',
+    marginTop: 24,
+  },
+  textAction: {
+    paddingRight: 32,
+    alignSelf: 'center',
+    textAlign: 'center',
     fontSize: 12,
     color: '#999999',
     marginTop: 24,
@@ -122,8 +190,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonWhite: {
+    marginTop: 63,
+    marginRight: 32,
+    width: '95%',
+    alignSelf: 'center',
+    height: 56,
+    borderRadius: 12,
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#F1F0F3',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   buttonText: {
     fontSize: 15,
     color: '#ffffff',
   },
+  buttonTextWhite: {
+    fontSize: 15,
+    color: '#000000',
+  },
+  actionSheet: {
+    width: '100%',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 32,
+  },
+
 });
