@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
 import face_id from '../../assets/face_id.png';
 import { MaterialIcons } from '@expo/vector-icons';

@@ -95,9 +95,6 @@ export function Product() {
               </Text>
             </TouchableOpacity>
           </Actionsheet.Item>
-          <Actionsheet.Item>
-          </Actionsheet.Item>
-
         </Actionsheet.Content>
       </Actionsheet>
 
@@ -133,12 +130,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   imageIllustration: {
-    // marginTop: 32,
-    // marginRight: 16,
     alignSelf: 'center',
-    // maxWidth: 311,
-    // maxHeight: 334,
-    // resizeMode: 'contain',
   },
   title: {
     paddingRight: 32,

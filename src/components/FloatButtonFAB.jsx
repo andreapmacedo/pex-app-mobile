@@ -16,12 +16,6 @@ export function FloatButtonFAB({ title, ...rest }) {
       {...rest}
     >
       <AntDesign name="arrowright" size={24} color="#fff" />
-      {/* <Text
-        color="white"
-        fontSize="sm"
-      >
-        {title}
-      </Text> */}
     </FloatButtonNativeBase>
   );
 }

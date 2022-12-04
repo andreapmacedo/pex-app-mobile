@@ -1,4 +1,3 @@
-// import { View, Button } from 'native-base';
 import { View } from 'native-base';
 import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
