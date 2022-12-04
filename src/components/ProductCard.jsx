@@ -1,10 +1,10 @@
 // import { View, Button } from 'native-base';
 import { View } from 'native-base';
-import { StyleSheet, Text, Image, Button } from 'react-native';
-import { CardButton } from '@components/CardButton';
-
+import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export function ProductCard({ title, description, image }) {
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -14,9 +14,16 @@ export function ProductCard({ title, description, image }) {
       />
       <Text style={styles.textCategory} >{ title }</Text>
       <Text style={styles.textDescription} > { description } </Text>
-      < CardButton 
-        title="Comprar"
-      />
+      
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Product')}
+      >
+        <Text style={styles.buttonText}>
+          Comprar
+        </Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -51,5 +58,19 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  buttonText: {
+    fontSize: 12,
+    color: '#ffffff',
+  },
+  button: {
+    width: '90%',
+    alignSelf: 'center',
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: '#F09200',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10,
   },
 });

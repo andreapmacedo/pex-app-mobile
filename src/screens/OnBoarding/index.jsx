@@ -11,8 +11,7 @@ export function OnBoarding() {
   const navigation = useNavigation();
 
   function handleNavigateToLogin() {
-    // navigation.navigate('Login');
-    navigation.navigate('Main');
+    navigation.navigate('Login');
   }
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { View, VStack } from 'native-base';
 import upload_image from '../../assets/upload_image.png';
 
@@ -14,83 +14,90 @@ export function SignIn() {
   const [birth, setBirth] = useState('');
   const [phone, setPhone] = useState('');
 
+  function handleSignUp() {
+    if (name === '' || birth === '' || phone === '') {
+      alert('Necessário preencher todos os campos');
+      return;
+    }
+    navigation.navigate('EnableFaceId');
+  }
+
+
   return (
     <VStack flex={1}
       backgroundColor="#ffffff"
     >
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.topMenu}>
+            <TouchableOpacity 
+              onPress={() => navigation.goBack()}>
+              <MaterialIcons name="arrow-back" size={24} color="#000" />
+            </TouchableOpacity>
+            <Text style={styles.topMenuText}>
+              Dados Pessoais
+            </Text>   
+            <TouchableOpacity 
+              onPress={() => navigation.goBack()}>
+              <MaterialIcons name="info" size={24} color="#000" />
+            </TouchableOpacity>
+          </View>
 
-    <View style={styles.container}>
 
-      <View style={styles.topMenu}>
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('SignUp')}>
-          <MaterialIcons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.topMenuText}>
-          Dados Pessoais
-        </Text>   
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('SignUp')}>
-          <MaterialIcons name="info" size={24} color="#000" />
-        </TouchableOpacity>
-      </View>
-
-
-      <Image
-        style={styles.image}
-        source={upload_image}
-      />
-
-      <View style={styles.inputViewContainer} >
-        <View style={styles.inputView} >
-          <TextInput 
-            style={styles.input}
-            placeholder="Nome Completo"
-            onChangeText={e => setName(e)}
-            value={name}
+          <Image
+            style={styles.image}
+            source={upload_image}
           />
+
+          <View style={styles.inputViewContainer} >
+            <View style={styles.inputView} >
+              <TextInput 
+                style={styles.input}
+                placeholder="Nome Completo"
+                onChangeText={e => setName(e)}
+                value={name}
+              />
+            </View>
+            <View style={styles.inputView} >
+              <TextInput 
+                style={styles.input}
+                placeholder="Data de Nascimento"
+                onChangeText={e => setBirth(e)}
+                value={birth}
+              />
+            </View>
+
+            <View style={styles.inputView} >
+              <TextInput 
+                style={styles.input}
+                placeholder="Telefone"
+                onChangeText={e => setPhone(e)}
+                value={phone}
+              />
+            </View>
+          </View>
         </View>
-        <View style={styles.inputView} >
-          <TextInput 
-            style={styles.input}
-            placeholder="Data de Nascimento"
-            onChangeText={e => setBirth(e)}
-            value={birth}
-          />
+
+
+        <View style={styles.footer}>
+          <TouchableOpacity
+            style={styles.buttonLeft}
+            onPress={() => navigation.navigate('EnableFaceId')}
+          >
+            <Text style={styles.buttonTextLeft}>
+              Pular
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonRight}
+            onPress={handleSignUp}
+          >
+            <Text style={styles.buttonTextRight}>
+              Cadastrar
+            </Text>
+          </TouchableOpacity>
         </View>
-
-        <View style={styles.inputView} >
-          <TextInput 
-            style={styles.input}
-            placeholder="Telefone"
-            onChangeText={e => setPhone(e)}
-            value={phone}
-          />
-        </View>
-      </View>
-
-    </View>
-
-
-      <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.buttonLeft}
-          onPress={() => navigation.navigate('EnableFaceId')}
-        >
-          <Text style={styles.buttonTextLeft}>
-            Pular
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonRight}
-          onPress={() => navigation.navigate('EnableFaceId')}
-        >
-          <Text style={styles.buttonTextRight}>
-            Cadastrar
-          </Text>
-        </TouchableOpacity>
-      </View>
-
+      </ScrollView>
     </VStack>
   );
 
@@ -184,10 +191,9 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   footer: {
+    marginTop: 170,
     flexDirection: 'row',
     width: '100%',
-    position: 'absolute',
-    bottom: 40,
     paddingLeft: 32,
     paddingRight: 32,
   },

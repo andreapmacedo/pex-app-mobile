@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Image, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { View, VStack } from 'native-base';
 import image_login from '../../assets/image_login.png';
 import { Dimensions } from 'react-native';
@@ -8,13 +9,18 @@ import AuthContext from "../../context/AuthContext";
 const windowWidth = Dimensions.get('window').width;
 
 export function Login() {
-  const { setAuthenticated, authenticated, user } = useContext(AuthContext);
+  const navigation = useNavigation();
+  const { setAuthenticated, user } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function handleLogin() {
+
+    if (password.length < 3 || Number(password) !== 123) {
+      alert('senha para acesso: 123');
+      return;
+    }
     if (Number(password) === user.password) {
-      console.log('igual');
       setAuthenticated(true);
     }
   }
@@ -23,62 +29,71 @@ export function Login() {
       <VStack flex={1}
         backgroundColor="#ffffff"
       >
-        <Image
-          style={styles.image}
-          source={image_login}
-        />
+        <ScrollView>
+          <Image
+            style={styles.image}
+            source={image_login}
+          />
 
-        <View style={styles.container}>
-          <Text style={styles.title}>
-            Bem vindo a PEX!
-          </Text>          
-          <Text style={styles.describe}>
-            Informe os seus dados para ter acesso a um mundo de economia para sua obra
-          </Text>
-
-          <View style={styles.inputView} >
-            <TextInput 
-              style={styles.input}
-              placeholder="Email"
-              onChangeText={e => setEmail(e)}
-              value={email}
-            />
-          </View>
-          <View style={styles.inputView} >
-            <TextInput 
-              style={styles.input}
-              placeholder="Senha"
-              onChangeText={e => setPassword(e)}
-              value={password}
-            />
-          </View>
-
-          <Text style={styles.orageTextTop}>
-            Esqueci minha senha
-          </Text>
-        
-        </View>
-        <View style={styles.footer}>
-          <TouchableOpacity
-            style={styles.button}
-            // onPress={() => navigation.navigate('SignUp')}
-            onPress={handleLogin}
-          >
-            <Text style={styles.buttonText}>
-              Acessar
+          <View style={styles.container}>
+            <Text style={styles.title}>
+              Bem vindo a PEX!
+            </Text>          
+            <Text style={styles.describe}>
+              Informe os seus dados para ter acesso a um mundo de economia para sua obra
             </Text>
-          </TouchableOpacity>
 
-          <View style={styles.footerTextContainer}>
-            <Text style={styles.footerText}>
-              Não possui uma conta?
-            </Text>
-            <Text style={styles.orageText}>
-              Criar conta
-            </Text>
+            <View style={styles.inputView} >
+              <TextInput 
+                style={styles.input}
+                placeholder="Email"
+                onChangeText={e => setEmail(e)}
+                value={email}
+              />
+            </View>
+            <View style={styles.inputView} >
+              <TextInput 
+                style={styles.input}
+                secureTextEntry={true}
+                placeholder="Senha"
+                onChangeText={e => setPassword(e)}
+                value={password}
+              />
+            </View>
+
+            <TouchableOpacity 
+              style={styles.orageTextTop} 
+              onPress={() => navigation.navigate('SignUp')}>
+              <Text style={styles.orageTextTop}>
+                Esqueci minha senha
+              </Text>
+            </TouchableOpacity>
+            <View style={styles.footer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={handleLogin}
+              >
+                <Text style={styles.buttonText}>
+                  Acessar
+                </Text>
+              </TouchableOpacity>
+
+              <View style={styles.footerTextContainer}>
+                <Text style={styles.footerText}>
+                  Não possui uma conta?
+                </Text>
+
+                <TouchableOpacity 
+                  style={styles.orageText} 
+                  onPress={() => navigation.navigate('SignUp')}>
+                  <Text style={styles.orageText}>
+                    Criar conta
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
-        </View>
-
+        </ScrollView>
       </VStack>
   );
 
@@ -145,6 +160,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     width: '100%',
+    paddingTop: 70,
     // position: 'absolute',
     // bottom: 40,
     paddingLeft: 32,

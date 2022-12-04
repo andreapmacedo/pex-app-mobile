@@ -1,8 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { ScrollView, View, VStack } from 'native-base';
-
-
 import logoPex from '../../assets/logo-pex-2.png';
 import topBanner from '../../assets/top-banner.png';
 import frameFake from '../../assets/frame-fake.png';
@@ -13,6 +11,7 @@ import { Feather } from '@expo/vector-icons';
 import { ListButton } from '../../components/ListButton';
 import { ProductCard } from '../../components/ProductCard';
 import { categories, productCartds } from '../../data';
+
   
 export function Main() {
 
@@ -56,7 +55,6 @@ export function Main() {
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <Image
-                // style={styles.image}  
                 source={frameFake}
               />
             </ScrollView>
@@ -89,13 +87,10 @@ export function Main() {
               source={banner3}
             />
           </View>
-          </ScrollView>
-        
+          </ScrollView>    
       </VStack>
   );
-
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -113,12 +108,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 33,
     // paddingLeft: windowWidth * 0.33,
-    
   },
   imageContainer: {
     position: 'absolute',
     top: 50,
-    // paddingTop: 65,
     left: 32 ,
   },
   image: {
