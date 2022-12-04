@@ -4,7 +4,6 @@ import productImg3 from '../assets/product-img-3.png';
 import productImgXl1 from '../assets/product-img-xl-1.png';
 import productImgXl2 from '../assets/product-img-xl-2.png';
 
-
 export const categories = [ 'Todas', 'Ofertas', 'Pisos e porcelanatos', 'Revestimentos', 'Ferragens', 'Ferramentas', 'Elétrica', 'Hidráulica', 'Construção', 'Jardinagem', 'Móveis', 'Decoração', 'Limpeza', 'Segurança', 'Outros' ];
 
 export const products = [

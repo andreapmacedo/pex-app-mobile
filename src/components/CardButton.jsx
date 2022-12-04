@@ -6,8 +6,6 @@ export function CardButton({ title, ...rest }) {
   return (
     <CardButtonNativeBase
       colorScheme="green"
-      // bg={'#fff'}
-      
       size="lg"
       style={styles.container}
       {...rest}

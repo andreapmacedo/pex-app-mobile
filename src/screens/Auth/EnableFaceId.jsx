@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
 import face_id from '../../assets/face_id.png';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -29,7 +28,6 @@ export function EnableFaceId() {
       <Text style={styles.describe}>
         Habilite o Face ID para acessar de forma mais fácil e ágil a sua conta da PEX com toda segurança
       </Text>
-
       <Image
         style={styles.image}
         source={face_id}

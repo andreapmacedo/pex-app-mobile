@@ -16,6 +16,7 @@ import { categories, productCartds } from '../../data';
 export function Main() {
 
   const navigation = useNavigation();
+  const categorySelected = 'Todas';
 
   return (
       <VStack flex={1}
@@ -48,7 +49,7 @@ export function Main() {
             <View style={styles.scrollCategories}>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                 { categories.map((category, index) => (
-                  <ListButton key={index} title={category}/>
+                  <ListButton key={index} title={category} selected={categorySelected}/>
                 ))}
               </ScrollView>
             </View>

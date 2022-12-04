@@ -1,17 +1,22 @@
 import { StyleSheet } from 'react-native';
 import { Button, Text, Center } from 'native-base';
 
-export function ListButton({ title, ...rest  }) {
+export function ListButton({ title, selected, ...rest  }) {
 
   return (
     <Button
-      style={styles.button}
+      
+      style={ selected === title ? styles.buttonSelected : styles.button }
       title={title}
       m={1}
       rounded={25}
       {...rest}
     >
-      <Text style={styles.title}>{title}</Text> 
+      <Text 
+        style={ selected === title ? styles.titleSelected : styles.title }  
+      >
+        {title}
+      </Text> 
     </Button>
   );
 }
@@ -22,7 +27,14 @@ const styles = StyleSheet.create({
     borderColor: '#F1F0F3',
     borderWidth: 1,
   },
+  buttonSelected: {
+    backgroundColor: '#7B61FF',
+    
+  },
   title: {
 
+  },
+  titleSelected: {
+    color: '#fff',
   },
 });
