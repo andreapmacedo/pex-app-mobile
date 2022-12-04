@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
-import upload_image from '../../assets/upload_image.png';
-
 import { MaterialIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons';
 
 export function TermsAndConditions() {

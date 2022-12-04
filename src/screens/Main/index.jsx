@@ -7,14 +7,11 @@ import frameFake from '../../assets/frame-fake.png';
 import banner1 from '../../assets/banner-1.png';
 import banner2 from '../../assets/banner-2.png';
 import banner3 from '../../assets/banner-3.png';
-// import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { ListButton } from '../../components/ListButton';
 import { ProductCard } from '../../components/ProductCard';
-import { Dimensions } from 'react-native';
 import { categories, productCartds } from '../../data';
 
-const windowWidth = Dimensions.get('window').width;
   
 export function Main() {
 
@@ -29,7 +26,6 @@ export function Main() {
             style={styles.image}
             source={logoPex}
           />
-
         </View>
           <View style={styles.topMenu}>
             <TouchableOpacity style={styles.buttonIcon}
@@ -44,12 +40,9 @@ export function Main() {
 
           <ScrollView>
           <Image
-              style={styles.topBanner}
-              source={topBanner}
-            />
-
-
-          
+            style={styles.topBanner}
+            source={topBanner}
+          />
           <Text style={styles.title} >Categorias</Text>
           <View style={styles.container}>
             <View style={styles.scrollCategories}>
@@ -62,7 +55,6 @@ export function Main() {
 
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <Image
-                // style={styles.image}  
                 source={frameFake}
               />
             </ScrollView>
@@ -95,13 +87,10 @@ export function Main() {
               source={banner3}
             />
           </View>
-          </ScrollView>
-        
+          </ScrollView>    
       </VStack>
   );
-
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -119,12 +108,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 33,
     // paddingLeft: windowWidth * 0.33,
-    
   },
   imageContainer: {
     position: 'absolute',
     top: 50,
-    // paddingTop: 65,
     left: 32 ,
   },
   image: {

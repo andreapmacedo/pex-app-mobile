@@ -3,20 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { View, VStack } from 'native-base';
 import face_id from '../../assets/face_id.png';
-// import { Dimensions } from 'react-native';
-// const windowWidth = Dimensions.get('window').width;
 import { MaterialIcons } from '@expo/vector-icons';
 
 export function EnableFaceId() {
 
   const navigation = useNavigation();
-  
-  const [checkboxState, setCheckboxState] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-
-
+ 
   return (
     <VStack flex={1}
       backgroundColor="#ffffff"
@@ -26,7 +18,7 @@ export function EnableFaceId() {
 
       <View style={styles.topMenu}>        
         <TouchableOpacity 
-          onPress={() => navigation.navigate('SignUp')}>
+          onPress={() => navigation.goBack()}>
           <MaterialIcons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
       </View>
